@@ -1,0 +1,19 @@
+
+<section id="todoComponent">
+    <h1>ToDo List</h1>
+
+    <input [(ngModel)]="filterString" placeholder="Filter your to-dos" class="filter">
+<ol>
+    <li *ngFor="let task of getFilteredResults()">
+        <!-- display task and completed status-->
+        <div class="task">
+        <span [ngClass]="{ completed: task.completed}">
+            <button *ngIf="!task.completed" class="compBtn" (click)="completeTask(task)">Completed</button> {{task.task}}
+        </span>
+        <button (click)="deleteTask(task)" class="deleteBtn">X</button>
+        </div>
+    </li>
+</ol>
+<input [(ngModel)]="newTask" placeholder="Add your to-to" id="new-todo">
+<button id="add-todo" (click)="addToList(newTask)">Add</button>
+</section>
